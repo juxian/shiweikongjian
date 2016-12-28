@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <!--朋友圈更新日志-->
+    <appender name="cofApiAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/cof.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/cof-%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.swkj.social.web.api.CofApi" level="INFO" additivity="false">
+        <appender-ref ref="cofApiAppender"/>
+    </logger>
+    <!--联系人上传日志-->
+    <appender name="contactsApiAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/contacts.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/contacts-%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.swkj.social.web.api.ContactsApi" level="INFO" additivity="false">
+        <appender-ref ref="contactsApiAppender"/>
+    </logger>
+    <!--数据同步日志-->
+    <appender name="dataSynApiAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/datasync.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/datasync-%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.swkj.social.web.api.DataSyncApi" level="INFO" additivity="false">
+        <appender-ref ref="dataSynApiAppender"/>
+    </logger>
+    <!--好友数量日志-->
+    <appender name="friendsApiAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/friends.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/friends-%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.swkj.social.web.api.FriendsApi" level="INFO" additivity="false">
+        <appender-ref ref="friendsApiAppender"/>
+    </logger>
+    <!--消息上传日志-->
+    <appender name="messageApiAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/message.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/message-%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.swkj.social.web.api.MessageApi" level="INFO" additivity="false">
+        <appender-ref ref="messageApiAppender"/>
+    </logger>
+    <!--手机环境上传日志-->
+    <appender name="phoneEnvApiAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/phoneEnv.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/phoneEnv-%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.swkj.social.web.api.PhoneEnvApi" level="INFO" additivity="false">
+        <appender-ref ref="phoneEnvApiAppender"/>
+    </logger>
+    <!--微信资料更新日志-->
+    <appender name="studyObjApiAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/studyObj.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/studyObj-%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.swkj.social.web.api.StudyObjApi" level="INFO" additivity="false">
+        <appender-ref ref="studyObjApiAppender"/>
+    </logger>
+    <!--联系人基本信息更新-->
+    <appender name="friendInfoApiAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/friendInfo.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/friendInfo-%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.swkj.social.web.api.FriendInfoApi" level="INFO" additivity="false">
+        <appender-ref ref="friendInfoApiAppender"/>
+    </logger>
+
+
+    <!--数据层日志-->
+    <appender name="daoAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/dao.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/dao-%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.swkj.social.dao" level="INFO" additivity="false">
+        <appender-ref ref="daoAppender"/>
+    </logger>
+
+    <!--API日志-->
+    <appender name="requestLogInfoAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/requestLogInfo.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/requestLogInfo-%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.swkj.social.web.api.RequestLog" level="INFO" additivity="false">
+        <appender-ref ref="requestLogInfoAppender"/>
+    </logger>
+
+    <appender name="requestLogWarnAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/requestLogWarn.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/requestLogWarn-%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.swkj.social.web.api.RequestLog" level="WARN" additivity="false">
+        <appender-ref ref="requestLogWarnAppender" />
+    </logger>
+
+    <appender name="requestLogErrorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/requestLogError.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/requestLogError-%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.swkj.social.web.api.RequestLog" level="ERROR" additivity="false">
+        <appender-ref ref="requestLogErrorAppender" />
+    </logger>
+
+
+</configuration>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="  
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd  
+            http://www.springframework.org/schema/aop 
+            http://www.springframework.org/schema/aop/spring-aop.xsd  
+            http://www.springframework.org/schema/context 
+            http://www.springframework.org/schema/context/spring-context.xsd  
+            http://www.springframework.org/schema/jee 
+            http://www.springframework.org/schema/jee/spring-jee.xsd  
+            http://www.springframework.org/schema/tx 
+            http://www.springframework.org/schema/tx/spring-tx.xsd
+            ">
+	<bean id="scheduler" lazy-init="false" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="applicationContextSchedulerContextKey" value="applicationContext" ></property>
+		<property name="globalJobListeners"><list><ref bean="jobGlobalListener" /></list></property>
+		<property name="configLocation" value="classpath:quartz.properties" ></property>
+		<property name="startupDelay" value="10" ></property>
+		<property name="autoStartup" value="true" ></property>
+		<property name="overwriteExistingJobs" value="true" ></property>
+		 <property name="schedulerContextAsMap">      
+            <map>      
+                <entry key="amqpTemplate" value-ref="amqpTemplate"/></map>
+                 </property>            
+			<property name="triggers"><list><ref bean="taskGroupTrigger" /></list>
+			</property>
+	</bean>
+	
+	<bean id="taskGroupTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="taskGroupTriggerDetail" ></property>
+		<property name="cronExpression">
+			<value>0/1 * * * * ?</value></property>
+	</bean>
+	
+	<bean id="taskGroupTriggerDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.swkj.zebra.timer.job.second.SendTaskGroupJob" ></property>
+		<property name="requestsRecovery" value="true" ></property>
+		<property name="durability" value="true" ></property>
+	</bean>
+</beans>
+
